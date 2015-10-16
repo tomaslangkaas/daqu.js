@@ -16,7 +16,7 @@ var datatable = [
 ```
 
 ```javascript
-var secondOldestOrderedByName = daqu(datatable, ['name', 'age']). //create daqu instance
+var secondOrderedByAgeAndName = daqu(datatable, ['name', 'age']). //create daqu instance
   all(). //start with indexes for all rows
   sort([
     //sort by age, descending, with a custom compare function
