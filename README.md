@@ -29,8 +29,15 @@ var result = daquInstance
 //result now equals
 //["Jane, age 56", "Joan, age 43", "Diane, age 39"]
 ```
+## daqu.js features
 
-## Data format
+* Tiny (~1 kb, minified)
+* Contains functions for filtering, sorting, mapping, reducing, slicing and more
+* MIT-licensed
+* Based on pure ECMAScript 3 (works in IE6+ and all other ECMAScript 3-compliant runtimes)
+* The library can easily be extended with add-on functionality
+
+## The `daqu` data format
 
 The `daqu` library requires data on a specific form, where each data column is represented as an array, and all column arrays are contained in another array. Specific column arrays can be accessed as `data[columnIndex]` and specific values as `data[columnIndex][rowIndex]`. The length of the first column array indicates the total number of data rows.
 
