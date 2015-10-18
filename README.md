@@ -32,7 +32,7 @@ var result = daquInstance
 ## daqu.js features
 
 * Tiny (~1 kb, minified)
-* Contains functions for filtering, sorting, mapping, reducing, slicing and more
+* Contains functions for filtering, multi-column sorting, mapping, reducing, slicing and more
 * MIT-licensed
 * Based on pure ECMAScript 3 (works in IE6+ and all other ECMAScript 3-compliant runtimes)
 * The library can easily be extended with add-on functionality
