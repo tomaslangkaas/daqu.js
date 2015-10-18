@@ -17,8 +17,7 @@ var daquInstance = daqu(datatable, ['name', 'age'])
   .sort(['age', true, null]); //sort by age, descending, no custom comparison function
 
 //dacuInstance.indexes now equals [3, 0, 2]
-
-//map the results to a new array
+//map these results to a new array:
 
 var result = daquInstance
   .map(function(datatable, rowIndex, daquInstance){
@@ -34,8 +33,8 @@ var result = daquInstance
 * Tiny (~1 kb, minified)
 * Contains functions for filtering, multi-column sorting, mapping, reducing, slicing and more
 * MIT-licensed
-* Based on pure ECMAScript 3 (works in IE6+ and all other ECMAScript 3-compliant runtimes)
-* The library can easily be extended with add-on functionality
+* ECMAScript 3 compliant code (works in IE6+ and all other ECMAScript 3 compliant runtimes)
+* The library can easily be extended with custom functionality
 
 ## The `daqu` data format
 
