@@ -2,35 +2,32 @@
 data query micro-library for in-memory data
 
 ```javascript
-//representation of tabular data with 2 columns and 4 rows
-
 var datatable = [
   ['Joan', 'John', 'Diane', 'Jane'],  //col 0: name
   [43, 56, 39, 56]                    //col 1: age
 ];
 
-//find all records which contain the substring 'an' in the name column
+//find all records which contain the substring 'an' in the name column,
+//sort results by descending age:
+
 var daquInstance = daqu(datatable, ['name', 'age'])
   .filter(function(datatable, rowIndex, daquInstance){
     return ('' + datatable[0][rowIndex]).indexOf('an') > -1;
+  })
+  .sort(['age', true, null]); //sort by age, descending, no custom comparison function
+
+//dacuInstance.indexes now equals [3, 0, 2]
+
+//map the results to a new array
+
+var result = daquInstance
+  .map(function(datatable, rowIndex, daquInstance){
+    return  datatable[0][rowIndex] + ', age' +
+            datatable[1][rowIndex] + '\n';
   });
 
-//dacuInstance.indexes now equals [0, 2, 3]
-
-//sort the results by descending age and build a string to show the results
-
-var output = daquInstance
-  .sort(['age', true, null]) //sort by age, descending, no custom comparison function
-  .reduce(function(value, datatable, rowIndex, daquInstance){
-    return value + datatable[0][rowIndex] + 
-      ', age' + datatable[1][rowIndex] + '\n';
-  }, ''); //initial value is empty string
-
-//inspecting output in a console yields:
-//> output
-//Jane, age 56
-//Joan, age 43
-//Diane, age 39
+//result now equals
+//["Jane, age 56", "Joan, age 43", "Diane, age 39"]
 ```
 
 ## Data format
