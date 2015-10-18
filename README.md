@@ -31,10 +31,11 @@ var result = daquInstance
 ## daqu.js features
 
 * Tiny (~1 kb, minified)
+* Fast (only manipulates arrays of integer indexes)
 * Contains functions for filtering, multi-column sorting, mapping, reducing, slicing and more
 * MIT-licensed
-* ECMAScript 3 compliant code (works in IE6+ and all other ECMAScript 3 compliant runtimes)
-* The library can easily be extended with custom functionality
+* ECMAScript 3 compliant (works in IE6+ and all other ECMAScript 3 compliant runtimes)
+* Easily extended with custom functionality
 
 ## The `daqu` data format
 
