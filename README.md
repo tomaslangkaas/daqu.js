@@ -136,6 +136,14 @@ The `parameterArray`
 
 ### `daquInstance.reduce(reduceFunction [,startValue)`
 
+### `daquInstance.save(name)`
+
+Saves a copy of the current query results. Returns the `daquInstance` to allow chaining. Useful when performing various subqueries from the same query result.
+
+### `daquInstance.restore(name)`
+
+Replaces the current query results with a copy of the query results saved under `name`. Returns the `daquInstance` to allow chaining. 
+
 ## Extending `daqu`
 
 The `daqu.inherit` property contains all class methods and can be extended by new methods
