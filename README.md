@@ -92,3 +92,9 @@ var ageColumn = datatable[0];
 
 var ageColumn = datatable[daquInstance.col.age];
 ```
+
+### `daquInstance.saved`
+
+Object containing saved query results. Used by the `daquInstance.save()` and `daquInstance.restore()` methods.
+
+## Query instance methods
