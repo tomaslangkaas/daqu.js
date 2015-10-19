@@ -53,7 +53,7 @@ var datatable = [
 
 ## Creating a `daqu` instance
 
-New data query instances are created with the `daqu(data [,columnNames])` function.
+New data query instances are created with the `daqu(data [, columnNames])` function.
 
 ```javascript
 var daquInstance = daqu(datatable);
@@ -98,3 +98,45 @@ var ageColumn = datatable[daquInstance.col.age];
 Object containing saved query results. Used by the `daquInstance.save()` and `daquInstance.restore()` methods.
 
 ## Query instance methods
+
+### `daquInstance.all()`
+
+Fills the `daquInstance.indexes` array with all available rowIndexes. Returns the `daquInstance` to allow chaining.
+
+### `daquInstance.filter(filterFunction [, useExistingBoolean])`
+
+Applies the filterFunction to all rows, and fills the `daquInstance.indexes` array with all rows where the filterFunction returns a truthy value. Returns the `daquInstance` to allow chaining.
+
+The filterFunction is provided with three arguments: `daquInstance.data`, the current `rowIndex` and the `daquInstance`.
+
+If the `useExistingBoolean` argument is set to a truthy value, the filterFunction filters the existing query indexes, otherwise it filters all rows.
+
+### `daquInstance.sort(parameterArray)`
+
+Applies multi-column sorting (up to 3 levels) to the current query results. Sort results are stable, thus sorting to more levels can be achieved by repeated application (in reverse order) of the sort method. Returns the `daquInstance` to allow chaining.
+
+The `parameterArray`
+
+```javascript
+
+['age'] //sort by age, ascending
+['age', false] //sort by age, ascending
+['age', false, false] //sort by age, ascending
+['age', true] //sort by age, descending
+['age', true, function(a, b){return a-b}] //sort by age, ascending, custom comparison function
+
+['age', true, null,
+'name', false, null]
+
+```
+
+### `daquInstance.slice(startIndex, stopIndex + 1)`
+
+### `daquInstance.map(mapFunction)`
+
+### `daquInstance.reduce(reduceFunction [,startValue)`
+
+## Extending `daqu`
+
+The `daqu.inherit` property contains all class methods and can be extended by new methods
+
