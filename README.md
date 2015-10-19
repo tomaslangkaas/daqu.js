@@ -22,7 +22,7 @@ var daquInstance = daqu(datatable, ['name', 'age'])
 var result = daquInstance
   .map(function(datatable, rowIndex){
     return  datatable[0][rowIndex] + ', age' +
-            datatable[1][rowIndex] + '\n';
+            datatable[1][rowIndex];
   });
 
 //result now equals
