@@ -36,8 +36,10 @@ var result = daquInstance
 * MIT-licensed
 * ECMAScript 3 compliant (works in IE6+ and all other ECMAScript 3 compliant runtimes)
 * Easily extended with custom functionality
+ 
+## API
 
-## The `daqu` data format
+### The `daqu` data format
 
 The `daqu` library requires data on a specific form, where each data column is represented as an array, and all column arrays are contained in another array. Specific column arrays can be accessed as `data[columnIndex]` and specific values as `data[columnIndex][rowIndex]`. The length of the first column array indicates the total number of data rows.
 
@@ -51,7 +53,7 @@ var datatable = [
 
 ```
 
-## Creating a `daqu` instance
+### Creating a `daqu` instance
 
 New data query instances are created with the `daqu(data [, columnNames])` function.
 
@@ -63,21 +65,21 @@ var daquInstance = daqu(datatable);
 var daquInstance = daqu(datatable, ['name', 'age']);
 ```
 
-## Query instance properties
+### Query instance properties
 
-### `daquInstance.data`
+#### `daquInstance.data`
 
 Reference to the datatable provided at instance creation.
 
-### `daquInstance.indexes`
+#### `daquInstance.indexes`
 
 Array with integer indexes representing the current query result. By default this array is empty. Fill this array with `daquInstance.all()` or `daquInstance.filter()`.
 
-### `daquInstance.names`
+#### `daquInstance.names`
 
 Array with column names provided at instance creation.
 
-### `daquInstance.col`
+#### `daquInstance.col`
 
 Object with column indexes corresponding to column names provided at instance creating. Facilitates column lookup by name instead of index.
 
@@ -93,17 +95,17 @@ var ageColumn = datatable[0];
 var ageColumn = datatable[daquInstance.col.age];
 ```
 
-### `daquInstance.saved`
+#### `daquInstance.saved`
 
 Object containing saved query results. Used by the `daquInstance.save()` and `daquInstance.restore()` methods.
 
-## Query instance methods
+### Query instance methods
 
-### `daquInstance.all()`
+#### `daquInstance.all()`
 
 Fills the `daquInstance.indexes` array with all available rowIndexes. Returns the `daquInstance` to allow chaining.
 
-### `daquInstance.filter(filterFunction [, useExistingBoolean])`
+#### `daquInstance.filter(filterFunction [, useExistingBoolean])`
 
 Applies the filterFunction to all rows, and fills the `daquInstance.indexes` array with all rows where the filterFunction returns a truthy value. Returns the `daquInstance` to allow chaining.
 
@@ -111,7 +113,7 @@ The filterFunction is provided with three arguments: `daquInstance.data`, the cu
 
 If the `useExistingBoolean` argument is set to a truthy value, the filterFunction filters the existing query indexes, otherwise it filters all rows.
 
-### `daquInstance.sort(parameterArray)`
+#### `daquInstance.sort(parameterArray)`
 
 Applies multi-column sorting (up to 3 levels) to the current query results. Sort results are stable, thus sorting to more levels can be achieved by repeated application (in reverse order) of the sort method. Returns the `daquInstance` to allow chaining.
 
@@ -130,21 +132,20 @@ The `parameterArray`
 
 ```
 
-### `daquInstance.slice(startIndex, stopIndex + 1)`
+#### `daquInstance.slice(startIndex, stopIndex + 1)`
 
-### `daquInstance.map(mapFunction)`
+#### `daquInstance.map(mapFunction)`
 
-### `daquInstance.reduce(reduceFunction [,startValue)`
+#### `daquInstance.reduce(reduceFunction [,startValue])`
 
-### `daquInstance.save(name)`
+#### `daquInstance.save(name)`
 
 Saves a copy of the current query results. Returns the `daquInstance` to allow chaining. Useful when performing various subqueries from the same query result.
 
-### `daquInstance.restore(name)`
+#### `daquInstance.restore(name)`
 
 Replaces the current query results with a copy of the query results saved under `name`. Returns the `daquInstance` to allow chaining. 
 
-## Extending `daqu`
+### Extending `daqu`
 
 The `daqu.inherit` property contains all class methods and can be extended by new methods
-
