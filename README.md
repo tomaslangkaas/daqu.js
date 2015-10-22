@@ -30,7 +30,7 @@ var result = daquInstance
 ```
 ## daqu.js features
 
-* Tiny (~1 kb, minified)
+* Tiny (~1.3 kb, minified)
 * Fast (only manipulates arrays of integer indexes)
 * Contains functions for filtering, multi-column sorting, mapping, reducing, slicing and more
 * MIT-licensed
@@ -115,7 +115,7 @@ If the `useExistingBoolean` argument is set to a truthy value, the filterFunctio
 
 #### `daquInstance.sort(parameterArray)`
 
-Applies multi-column sorting (up to 3 levels) to the current query results. Sort results are stable, thus sorting to more levels can be achieved by repeated application (in reverse order) of the sort method. Returns the `daquInstance` to allow chaining.
+Applies multi-column sorting to the current query results. Returns the `daquInstance` to allow chaining.
 
 The `parameterArray`
 
@@ -123,12 +123,11 @@ The `parameterArray`
 
 ['age'] //sort by age, ascending
 ['age', false] //sort by age, ascending
-['age', false, false] //sort by age, ascending
 ['age', true] //sort by age, descending
-['age', true, function(a, b){return a-b}] //sort by age, ascending, custom comparison function
+['age', function(a, b){return a-b}] //sort by age, custom comparison function
 
-['age', true, null,
-'name', false, null]
+['age', true,
+'name', false]
 
 ```
 
