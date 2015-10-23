@@ -157,8 +157,8 @@ daqu.inherit.startsWith = function(col, char){
 }
 
 var queryObject = daqu([
-  ['Ann', 'John', 'James'],
-  [45, 64, 32]
+  ['Ann', 'John', 'James'], //name
+  [45, 64, 32]              //age
 ]);
 
 //get name of all records with name starting with 'J',
