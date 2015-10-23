@@ -147,4 +147,27 @@ Replaces the current query results with a copy of the query results saved under 
 
 ### Extending `daqu`
 
-The `daqu.inherit` property contains all class methods and can be extended by new methods
+The `daqu.inherit` property contains all class methods and can be extended by new methods.
+
+```javascript
+daqu.inherit.startsWith = function(col, char){
+  return this.filter(function(data, index){
+    return ('' + data[col][index]).charAt(0) == char;
+  });
+}
+
+var queryObject = daqu([
+  ['Ann', 'John', 'James'],
+  [45, 64, 32]
+]);
+
+//get name of all records with name starting with 'J',
+//sorted by age
+var result = queryObject
+  .startsWith(0, 'J')
+  .sort([1, false])
+  .map(function(data, index){
+    return data[0][index];
+  });
+//result now equals ["James", "John"]
+```
