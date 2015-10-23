@@ -32,14 +32,14 @@ var daqu = (function(inheritance){
 			//otherwise, return last result
 			return c1(v1[a], v1[b]) ||
 			v2 && (c2(v2[a], v2[b])) ||
-			v3 && (c3(v3[a], v3[b]));
+			v3 && (c3(v3[a], v3[b])) || 0;
 		}
 		function sortMultiCol(a, b){
 			var result;
 			for(i = 0; !result && i < l; i++){
 				result = c[i](v[i][a], v[i][b]);
 			}
-			return result;
+			return result || 0;
 		}
 		var t = this, d = t['data'], col = t['col'],
 			p = parameters,
