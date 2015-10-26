@@ -121,7 +121,7 @@ var t = Quicktest(
 			.indexes, '1,3'
 		
 	],
-	function(r){testresults.innerHTML = '<pre><code>'+r+'</code></pre>';}
+	function(r){document.getElementById('testresults').innerHTML = '<pre><code>'+r+'</code></pre>';}
 );
 
 })();
