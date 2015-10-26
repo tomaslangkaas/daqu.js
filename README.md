@@ -103,7 +103,7 @@ Object containing saved query results. Used by the `daquInstance.save()` and `da
 
 #### `daquInstance.all()`
 
-Fills the `daquInstance.indexes` array with all available rowIndexes. Returns the `daquInstance` to allow chaining.
+Fills the `daquInstance.indexes` array with all row indexes. Returns the `daquInstance` to allow chaining.
 
 #### `daquInstance.filter(filterFunction [, useExistingBoolean])`
 
@@ -144,7 +144,7 @@ Slices the current query result. `startindex` and `stopindex` refers to the inde
 
 #### `daquInstance.map(mapFunction)`
 
-Maps the current query results to a new array, where each item is the return value of the mapFunction. The `mapFunction` is provided with three arguments for each element in the current query result: `daquInstance.data`, the current `rowIndex` and the `daquInstance`.
+Maps the current query results to a new array, where each item is the return value of the mapFunction. The `mapFunction` is provided with three arguments for each element in the current query result: `daquInstance.data`, the current `rowIndex` and the `daquInstance`. Returns the new array.
 
 #### `daquInstance.reduce(reduceFunction [,startValue])`
 
@@ -152,7 +152,7 @@ Reduces the current query results. The `reduceFunction` is provided with four ar
 
 #### `daquInstance.save(name)`
 
-Saves a copy of the current query results. Returns the `daquInstance` to allow chaining. Useful when performing various subqueries from the same query result.
+Saves a copy of the current query results. Returns the `daquInstance` to allow chaining. Useful when performing various subqueries from the same query result.Returns the `daquInstance` to allow chaining. 
 
 #### `daquInstance.restore(name)`
 
