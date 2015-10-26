@@ -81,7 +81,7 @@ Array with column names provided at instance creation.
 
 #### `daquInstance.col`
 
-Object with column indexes corresponding to column names provided at instance creating. Facilitates column lookup by name instead of index.
+Object with keys corresponding to column indexes, if column names are provided at instance creation. Facilitates column lookup by name instead of index.
 
 ```javascript
 var daquInstance = daqu(datatable, ['name', 'age']);
@@ -111,31 +111,44 @@ Applies the filterFunction to all rows, and fills the `daquInstance.indexes` arr
 
 The filterFunction is provided with three arguments: `daquInstance.data`, the current `rowIndex` and the `daquInstance`.
 
-If the `useExistingBoolean` argument is set to a truthy value, the filterFunction filters the existing query indexes, otherwise it filters all rows.
+If the `useExistingBoolean` argument is set to a truthy value, the filterFunction is applied to the existing query results, otherwise it is applied to all rows in the data.
 
 #### `daquInstance.sort(parameterArray)`
 
 Applies multi-column sorting to the current query results. Returns the `daquInstance` to allow chaining.
 
-The `parameterArray`
+The `parameterArray` specifices which columns to sort the data by and how to sort each column. For each column to sort by, there are two arguments. The first argument is the column index or column name. The second argument indicates how to sort the column. A falsy value indicates that the column is sorted ascending with the default comparison function. A truthy value indicates that the column is sorted descending with the default comparison function. If a custom comparison function is provided as the second argument, this will be used to compare elements in the column.
+
+If the second argument is omitted, it defaults to false (ascending sorting).The default comparison function compares elements by value, which result in lexicographic sorting of string columns and numeric sorting of number columns. Custom comparison functions take two elements, `a` and `b`, and return 0 if they are equal, a positive number if `a` should be positioned before `b`, and a negative number if `a` should be positioned after `b`. This corresponds to the normal behaviour of comparison functions when sorting ECMAScript arrays.
+
+The sort method allows multi-column sorting to any number of columns.
 
 ```javascript
+daquInstance.sort(['age']); //sort by age, ascending
 
-['age'] //sort by age, ascending
-['age', false] //sort by age, ascending
-['age', true] //sort by age, descending
-['age', function(a, b){return a-b}] //sort by age, custom comparison function
+daquInstance.sort(['age', false]); //sort by age, ascending
 
-['age', true,
-'name', false]
+daquInstance.sort(['age', true]); //sort by age, descending
 
+daquInstance.sort(['age', function(a, b){return a-b}]); //sort by age, custom comparison function
+
+daquInstance.sort[
+  'age', true,  //sort by age, descending
+  'name', false //then by name, ascending
+]);
 ```
 
 #### `daquInstance.slice(startIndex, stopIndex + 1)`
 
+Slices the current query result. `startindex` and `stopindex` refers to the indexes of the current query results. This method is useful when limiting the results to the top *n* results, or for paginating search results (in combination with the `.save()` and `.restore()` methods). Returns the `daquInstance` to allow chaining.
+
 #### `daquInstance.map(mapFunction)`
 
+Maps the current query results to a new array, where each item is the return value of the mapFunction. The `mapFunction` is provided with three arguments for each element in the current query result: `daquInstance.data`, the current `rowIndex` and the `daquInstance`.
+
 #### `daquInstance.reduce(reduceFunction [,startValue])`
+
+Reduces the current query results. The `reduceFunction` is provided with four arguments for each element in the current query result: `daquInstance.data`, the current `rowIndex`, the `daquInstance`, and the current `value`. The reduceFunction is called for each element in the curent query result, and the current `value` is set to the return value of the `reduceFunction`. Returns the final value.
 
 #### `daquInstance.save(name)`
 
