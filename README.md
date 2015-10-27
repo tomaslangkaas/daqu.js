@@ -132,7 +132,7 @@ daquInstance.sort(['age', true]); //sort by age, descending
 
 daquInstance.sort(['age', function(a, b){return a-b}]); //sort by age, custom comparison function
 
-daquInstance.sort[
+daquInstance.sort([
   'age', true,  //sort by age, descending
   'name', false //then by name, ascending
 ]);
