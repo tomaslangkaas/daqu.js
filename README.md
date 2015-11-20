@@ -36,6 +36,10 @@ var result = daquInstance
 * MIT-licensed
 * ECMAScript 3 compliant (works in IE6+ and all other ECMAScript 3 compliant runtimes)
 * Easily extended with custom functionality
+
+## Tests
+
+[Run tests](http://tomaslangkaas.github.io/daqu.js/testrunner.html) online
  
 ## API
 
