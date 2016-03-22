@@ -107,7 +107,8 @@ var daqu = (function(inheritance){
 		return t;
 	},
 	'reduce': function(reducer, value, isMap){
-		var t = this, data = t['data'], indexes = t['indexes'], i = 0, l = indexes.length;
+		var undef, t = this, data = t['data'], indexes = t['indexes'], i = 0, l = indexes.length;
+		if(value == undef) value = '';
 		if(!isMap){
 			for(;i < l; i++){
 				value = reducer(data, indexes[i], t, value);
